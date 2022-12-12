@@ -4,9 +4,7 @@ https://docs.uniswap.org/protocol/V2/reference/smart-contracts/factory
 
 from web3 import Web3
 
-SERENDALE_CONTRACT_ADDRESS = '0x9014B937069918bd319f80e8B3BB4A2cf6FAA5F7'
-CRYSTALVALE_CONTRACT_ADDRESS = '0x794C07912474351b3134E6D6B3B7b3b4A07cbAAa'
-SERENDALE2_CONTRACT_ADDRESS = '0x36fAE766e51f17F8218C735f58426E293498Db2B'
+CONTRACT_ADDRESS = '0x9014B937069918bd319f80e8B3BB4A2cf6FAA5F7'
 
 ABI = """
     [
@@ -29,7 +27,7 @@ def all_pairs_length(rpc_address):
 
     w3 = Web3(Web3.HTTPProvider(rpc_address))
 
-    contract_address = Web3.toChecksumAddress(SERENDALE_CONTRACT_ADDRESS)
+    contract_address = Web3.toChecksumAddress(CONTRACT_ADDRESS)
     contract = w3.eth.contract(contract_address, abi=ABI)
 
     return contract.functions.allPairsLength().call()
@@ -44,7 +42,7 @@ def all_pairs(index, rpc_address):
     '''
     w3 = Web3(Web3.HTTPProvider(rpc_address))
 
-    contract_address = Web3.toChecksumAddress(SERENDALE_CONTRACT_ADDRESS)
+    contract_address = Web3.toChecksumAddress(CONTRACT_ADDRESS)
     contract = w3.eth.contract(contract_address, abi=ABI)
 
     return contract.functions.allPairs(index).call()
@@ -53,7 +51,7 @@ def all_pairs(index, rpc_address):
 def get_pair(token_address_1, token_address_2, rpc_address):
     w3 = Web3(Web3.HTTPProvider(rpc_address))
 
-    contract_address = Web3.toChecksumAddress(SERENDALE_CONTRACT_ADDRESS)
+    contract_address = Web3.toChecksumAddress(CONTRACT_ADDRESS)
     contract = w3.eth.contract(contract_address, abi=ABI)
 
     return contract.functions.getPair(token_address_1, token_address_2).call()
